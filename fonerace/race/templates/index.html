@@ -1,0 +1,65 @@
+<html>
+    <head>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+        <title>F1 Race</title>
+    </head>
+    <body>
+
+        <p>
+          <h1> F1 - Grande Prêmio</h1>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Posição</th>
+                <th>Piloto</th>
+                <th>Voltas</th>
+                <th>Tempo Total</th>
+                <th>Melhor Volta</th>
+                <th>Melhor Tempo</th>
+                <th>Velocidade Média</th>
+                <th>Tempo após Primeiro</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for colocacao in classificacao %}
+            <tr>
+              <td>{{colocacao.posicao}}</td>
+              <td>{{colocacao.piloto}}</td>
+              <td>{{colocacao.voltas}}</td>
+              <td>{{colocacao.tempo_total}}</td>
+              <td>{{colocacao.melhor_volta}}</td>
+              <td>{{colocacao.melhor_tempo_volta|time:"H:i s.u"}}</td>
+              <td>{{colocacao.velocidade_media|floatformat:2}}</td>
+              <td>{{colocacao.tempo_apos_primeiro}}</td>
+            </tr>
+            {% endfor %}
+            <tbody>
+          </table>
+        </p>
+        <p>
+          <h4>Melhor volta</h2>
+          <table class="table table-striped">
+            <thead>
+              <th>Hora</th>
+              <th>Piloto</th>
+              <th>Melhor Volta</th>
+              <th>Melhor Tempo</th>
+              <th>Velocidade Média</th>
+            </thead>
+            <tbody>
+            <tr>
+              <td>{{ melhor_volta.hora|time:"H:i s.u"}} </td>
+              <td>{{ melhor_volta.piloto }}</td>
+              <td>{{ melhor_volta.volta }}</td>
+              <td>{{ melhor_volta.tempo_volta|time:"H:i s.u" }}</td>
+              <td>{{ melhor_volta.velocidade_media|floatformat:2 }}</td>
+            </tr>
+          </tbody>
+          </table>
+        </p>
+        <p>Tempo total da prova: {{tempo_total}} </p>
+    </body>
+</html>

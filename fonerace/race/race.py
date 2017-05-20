@@ -45,18 +45,19 @@ class Race:
 
         lista = sorted(lista, key=lambda x:x.tempo_total, reverse=False)
 
-        #Trata pilotos que não completaram a prova ###########################
+        #Trata pilotos que não completaram a prova e seta tempos ###########################
         temp = list()
         for x in lista:
             if x.voltas<4:
                 lista.remove(x)
                 temp.append(x)
             else:
-                x.tempo_apos_primeiro = x.tempo_total - lista[0].tempo_total
-
+                x.tempo_apos_primeiro = str(x.tempo_total - lista[0].tempo_total)
+                
         lista = lista + temp
         ######################## Trata posições ###############
-        # print("Posicao | Piloto | Voltas | Tempo Total |  Melhor Volta|  Melhor Tempo | Velocidade Media | Tempo apos primeiro  |")
+        # print("Posicao | Piloto | Voltas | Tempo Total |  Melhor Volta|
+        #  Melhor Tempo | Velocidade Media | Tempo apos primeiro  |")
         posicao = 0
         for mark in lista:
             posicao += 1
@@ -71,7 +72,8 @@ class Race:
 
     def tempo_total_prova(self):
 
-        tempo_prova = datetime.combine(date.min,self.result[len(self.result)-1].hora())- datetime.combine(date.min,self.result[0].hora())
+        tempo_prova = datetime.combine(date.min,self.result[len(self.result)-1].hora())\
+        - datetime.combine(date.min,self.result[0].hora())
 
         # print("Tempo Total "+str(tempo_prova))
         return str(tempo_prova)

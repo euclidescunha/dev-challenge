@@ -25,3 +25,12 @@ A partir log da corrida (race.log), montar um report com as seguintes informaç�
 
 * Crie um repositório no seu perfil do GitHub e nos envie a url.
 * Crie um arquivo README.md para adicionar algum comentário/observação que achar importante.
+
+
+
+## Para funcionar projeto django
+* Ter o python 3 instalado
+* Criar Virtual environment ~$ python3 -m venv myvenv
+* Instalar requirements.txt
+* Rodar testes ~$ pytho manage.py test
+* Levantar Serviço ~$ pytho manage.py runserver
